@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="НИИ «Сфера»">
+<title>НИИ «Сфера» · Досье</title>
+
+<link rel="icon" type="image/x-icon" href="favicon.ico?v=1">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png?v=1">
+<link rel="shortcut icon" href="favicon.ico?v=1">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon.png?v=1">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin">
+<link href="https://fonts.googleapis.com/css2?family=Handjet:wght@300;400;600;800&family=VT323&family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ BOOT ============ -->
+<div id="boot" class="boot">
+    <div class="boot__scan"></div>
+    <div class="boot__inner">
+        <pre class="boot__log" id="bootLog"></pre>
+    </div>
+</div>
+
+<!-- ============ ЭФФЕКТЫ ============ -->
+<div class="fx fx--scanlines"></div>
+<div class="fx fx--noise"></div>
+<div class="fx fx--vignette"></div>
+<div class="fx fx--grain"></div>
+<div class="fx fx--edge"></div>
+<div class="fx fx--glitch" id="fxGlitch"></div>
+
+<!-- ============ ОСНОВНОЙ ИНТЕРФЕЙС ============ -->
+<div class="shell" id="shell" hidden>
+
+    <header class="head">
+        <div class="head__left">
+            <a class="head__mark" href="#dossier" data-nav data-page="dossier">НИИ «СФЕРА»</a>
+            <span class="head__sub">Научно-исследовательский институт «Сфера»</span>
+        </div>
+        <div class="head__right">
+            <div class="vol">
+                <span class="vol__label">ЗВУК</span>
+                <input type="range" id="vol" min="0" max="100" value="50" class="vol__slider">
+                <button class="vol__mute" id="muteBtn">mute</button>
+            </div>
+        </div>
+    </header>
+
+    <nav class="tabs">
+        <a class="tab" data-nav data-page="dossier"       href="#dossier">Личное дело</a>
+        <a class="tab" data-nav data-page="dialog"        href="#dialog">Переписка</a>
+        <a class="tab" data-nav data-page="motivation"    href="#motivation">Мотивация</a>
+        <a class="tab" data-nav data-page="goals"         href="#goals">Личные подцели</a>
+        <a class="tab" data-nav data-page="goals-shared"  href="#goals-shared">Общие цели</a>
+    </nav>
+
+    <main class="content" id="content"></main>
+
+    <div class="hint-bar" id="hintBar">
+        <span class="hint-bar__dot"></span>
+        <span>клик по странице — открыть следующую реплику</span>
+    </div>
+
+    <footer class="foot">
+        <span>НИИ «СФЕРА» · 1974—1991</span>
+    </footer>
+</div>
+
+<!-- ============================================================
+     ШАБЛОНЫ СТРАНИЦ
+     ============================================================ -->
+
+<!-- ==================================================
+     1. ЛИЧНОЕ ДЕЛО
+     ================================================== -->
+<script type="text/template" id="tpl-dossier">
+<section class="doc doc--dossier">
+
+    <h2 class="doc__title">ЛИЧНОЕ ДЕЛО</h2>
+
+    <div class="dossier__name">Соколова Анна Викторовна.</div>
+
+    <dl class="dossier__meta">
+        <div class="field">
+            <dt class="field__label">Возраст</dt>
+            <dd class="field__value">34 года.</dd>
+        </div>
+        <div class="field">
+            <dt class="field__label">Пол</dt>
+            <dd class="field__value">женский.</dd>
+        </div>
+        <div class="field field--wide">
+            <dt class="field__label">Образование</dt>
+            <dd class="field__value">Первый МГМУ им. Сеченова, лечебное дело. Ординатура по неврологии. Кандидат наук. Специализация — сомнология.</dd>
+        </div>
+        <div class="field field--wide">
+            <dt class="field__label">Место работы</dt>
+            <dd class="field__value">НИИ неврологии, отделение сомнологии. Научный сотрудник.</dd>
+        </div>
+    </dl>
+
+    <div class="dossier__section">Биография</div>
+
+    <div class="dossier__body">
+        <p>Родилась в Москве, в семье врачей. Отец — хирург, мать — педиатр. С детства — разговоры о медицине, ночные дежурства отца, звонки пациентов матери. В школе была тихой, но упорной. Не блестящие оценки, а методичность. Первый мед закончила без вопросов.</p>
+
+        <p>На третьем курсе выбрала неврологию, на пятом — сомнологию. Тема диплома: «Расстройства сна у ветеранов локальных конфликтов». Научный руководитель сказал: «Ты выбрала тему, которая тебя съест». Она не поверила.</p>
+
+        <p>В 2015 защитила кандидатскую по коллективным сновидениям. Материал собирала по закрытым архивам. Впервые наткнулась на упоминание НИИ «Сфера» — в сноске старой монографии 1989 года. Не придала значения.</p>
+
+        <p>В 2018 вышла замуж, в 2020 развелась. Без скандала. Муж не понимал, почему она приходит домой и молчит часами. Она не могла объяснить.</p>
+
+        <p>Младшая сестра Дарья, 26 лет, дизайнер. Отношения близкие, но не теплые. Анна — старшая, ответственная, контролирующая. Дарья — свободная, легкомысленная. Мать умерла в 2019, отец — в 2021. Обе смерти — онкология. Анна была рядом до конца. После этого стала замкнутой.</p>
+
+        <p>Последние два года живет одна. Работает по 12 часов. Спит по 4–5 часов. Считает, что это норма. Коллеги считают, что она сгорает.</p>
+
+        <p class="dossier__final">В январе 2025 Дарья заснула и не проснулась. Диагноз не ставят. Сестра в реанимации, на аппаратах. Анна дежурит у койки каждую свободную минуту. Спит в ординаторской.</p>
+    </div>
+
+</section>
+</script>
+
+<!-- ==================================================
+     2. ПЕРЕПИСКА
+     ================================================== -->
+<script type="text/template" id="tpl-dialog">
+<section class="doc doc--dialog">
+
+    <h2 class="doc__title">РАЗГОВОР</h2>
+
+    <div class="scene print" data-lines='["Анна сидит у монитора. Открыта история болезни Дарьи. Двадцатый раз перечитывает одну и ту же страницу. За окном — снег. Телефон вибрирует. Номер незнакомый. Она смотрит на него секунд пять, прежде чем ответить."]'></div>
+
+    <div class="chat">
+        <div class="chat__line print" data-lines='["— Алло."]'></div>
+        <div class="chat__line print" data-lines='["— Анна Викторовна?"]'></div>
+        <div class="chat__line print" data-lines='["— Да. Кто это?"]'></div>
+        <div class="chat__line print" data-lines='["— Меня зовут... это неважно. Я по поводу вашей сестры."]'></div>
+    </div>
+
+    <div class="scene print" data-lines='["Анна медленно отъезжает от стола. Смотрит на телефон. Потом обратно на монитор. На строчку «Причина: не установлена»."]'></div>
+
+    <div class="chat">
+        <div class="chat__line print" data-lines='["— Если вы из клиники — я уже говорила с лечащим. Мне нужны документы, а не соболезнования. И, честно говоря, три часа ночи — не самое подходящее время."]'></div>
+        <div class="chat__line print" data-lines='["— Я не из клиники. И не с соболезнованиями. Вы ведь уже месяц копаете. Не спите ночами. Ищете причину. Я знаю, где она."]'></div>
+        <div class="chat__line print" data-lines='["— Если вы знаете — говорите сейчас. Не надо загадок. Я устала. Я две недели на кофе и сигаретах."]'></div>
+        <div class="chat__line print" data-lines='["— По телефону не могу. Но я могу дать вам доступ туда, куда вы не попадете ни через архивы, ни через институт, ни через Минздрав."]'></div>
+        <div class="chat__line print" data-lines='["— Куда?"]'></div>
+        <div class="chat__line print" data-lines='["— НИИ «Сфера». Вы ведь уже слышали это название?"]'></div>
+    </div>
+
+    <div class="scene print" data-lines='["Долгая пауза. Анна закрывает глаза. Восемь лет назад. Библиотека. Монография 1989 года. Сноска мелким шрифтом. Она тогда отметила её карандашом. И забыла."]'></div>
+
+    <div class="chat">
+        <div class="chat__line print" data-lines='["— Слышала. И что?"]'></div>
+        <div class="chat__line print" data-lines='["— У нас есть группа. Мы собираемся туда. Нам нужен человек, который понимает сны. Не как психолог — как сомнолог. Вы — единственная в стране, кто защитился по коллективным сновидениям. Мы читали вашу работу."]'></div>
+        <div class="chat__line print" data-lines='["— Мою работу читали три человека. Двое — мои оппоненты. Третий — научный руководитель, и он умер."]'></div>
+        <div class="chat__line print" data-lines='["— Четвёртый — я."]'></div>
+    </div>
+
+    <div class="scene print" data-lines='["Анна усмехается. Впервые за две недели. Встаёт. Идёт к окну."]'></div>
+
+    <div class="chat">
+        <div class="chat__line print" data-lines='["— Хорошо. Допустим, я поверю. Что вы хотите от меня конкретно? Идти внутрь?"]'></div>
+        <div class="chat__line print" data-lines='["— Да. Внутрь. С группой."]'></div>
+        <div class="chat__line print" data-lines='["— Я не полезу в бункер. Я не дура. Я врач, а не сталкер. Я не умею обращаться с оружием, я не знаю, как выживать в лесу..."]'></div>
+        <div class="chat__line print" data-lines='["— Мы тоже не дураки. Мы не посылаем людей без причины. Ваша причина — Дарья. Если вы найдете то, что ищете — у вас будет шанс."]'></div>
+        <div class="chat__line print" data-lines='["— Шанс на что?"]'></div>
+        <div class="chat__line print" data-lines='["— На то, чтобы понять. А потом — на то, чтобы разбудить."]'></div>
+    </div>
+
+    <div class="scene print" data-lines='["Анна долго молчит. Смотрит на снег."]'></div>
+
+    <div class="chat">
+        <div class="chat__line print" data-lines='["— Почему я? У вас же наверняка есть люди. Военные. Специалисты."]'></div>
+        <div class="chat__line print" data-lines='["— Потому что вы уже внутри. Вы спите с ней каждую ночь. Вы видите её. Вы просто не признаетесь в этом."]'></div>
+    </div>
+
+    <div class="scene print" data-lines='["Анна замирает. Рука на подоконнике."]'></div>
+
+    <div class="chat">
+        <div class="chat__line print" data-lines='["— Откуда вы..."]'></div>
+        <div class="chat__line print" data-lines='["— Мы знаем. Мы знаем, что вы не спите без света. Мы знаем, что вы видите её. Мы знаем, что вы боитесь."]'></div>
+        <div class="chat__line print" data-lines='["— Я не боюсь."]'></div>
+        <div class="chat__line print" data-lines='["— Вы боитесь. И правильно. Потому что то, что с вами происходит — не галлюцинация. Не внушение. Не психоз. Это след. След объекта. И если вы хотите понять — придется поехать туда, откуда этот след."]'></div>
+    </div>
+
+    <div class="scene print" data-lines='["Анна долго молчит. Потом — тише:"]'></div>
+
+    <div class="chat">
+        <div class="chat__line print" data-lines='["— Хорошо. Допустим. Что я должна делать там?"]'></div>
+        <div class="chat__line print" data-lines='["— Смотреть. Слушать. Анализировать. Вы — глаза группы. Если что-то в системе работает не так — вы увидите первой."]'></div>
+        <div class="chat__line print" data-lines='["— Это опасно?"]'></div>
+        <div class="chat__line print" data-lines='["— Да."]'></div>
+        <div class="chat__line print" data-lines='["— Я могу умереть?"]'></div>
+        <div class="chat__line print" data-lines='["— Возможно."]'></div>
+        <div class="chat__line print" data-lines='["— Вы честный."]'></div>
+        <div class="chat__line print" data-lines='["— Я реалист."]'></div>
+        <div class="chat__line print" data-lines='["— У меня есть время подумать?"]'></div>
+        <div class="chat__line print" data-lines='["— До двадцать второго марта. Пришлём адрес."]'></div>
+        <div class="chat__line print" data-lines='["— Я вам не сказала «да»."]'></div>
+        <div class="chat__line print" data-lines='["— Вы не сказали «нет»."]'></div>
+    </div>
+
+    <div class="scene scene--final print" data-lines='["Анна кладёт трубку. Смотрит в монитор. История болезни Дарьи. Строчка «Причина неизвестна». Она выключает компьютер. Открывает шкаф. Достает старый рюкзак. Начинает складывать."]'></div>
+
+</section>
+</script>
+
+<!-- ==================================================
+     3. МОТИВАЦИЯ
+     ================================================== -->
+<script type="text/template" id="tpl-motivation">
+<section class="doc doc--motivation">
+
+    <h2 class="doc__title">МОТИВАЦИЯ</h2>
+
+    <div class="motivation">
+        <p class="motivation__lead">Сестра Дарья в коме с января 2025. Врачи говорят «неизвестная этиология». Анна — сомнолог. Она знает: такой этиологии не существует. Есть причина. Просто её не там ищут.</p>
+
+        <p>Когда ей позвонили и назвали НИИ «Сфера», она вспомнила сноску из монографии 1989 года, которую читала десять лет назад. Тогда не придала значения. Теперь — вспомнила.</p>
+
+        <p class="motivation__final">Она едет не спасать мир. Она едет понять. Понять — значит разбудить Дарью.</p>
+    </div>
+
+</section>
+</script>
+
+<!-- ==================================================
+     4. ЛИЧНЫЕ ПОДЦЕЛИ
+     ================================================== -->
+<script type="text/template" id="tpl-goals">
+<section class="doc doc--goals">
+
+    <h2 class="doc__title">ЛИЧНЫЕ ПОДЦЕЛИ</h2>
+
+    <ol class="goals">
+        <li class="goal">
+            <div class="goal__num">01</div>
+            <div class="goal__body">
+                <p class="goal__main">Найти любые записи о том, как работает управляемый сон — механику, не мистику.</p>
+            </div>
+        </li>
+
+        <li class="goal">
+            <div class="goal__num">02</div>
+            <div class="goal__body">
+                <p class="goal__main">Найти историю болезни пациента, находившегося в коме с 1987 года, сопоставить с состоянием сестры.</p>
+            </div>
+        </li>
+
+        <li class="goal">
+            <div class="goal__num">03</div>
+            <div class="goal__body">
+                <p class="goal__main">Найти свидетельства о попытках вывести человека из сна. Понять, что сработало, что нет.</p>
+            </div>
+        </li>
+
+        <li class="goal">
+            <div class="goal__num">04</div>
+            <div class="goal__body">
+                <p class="goal__main">Проверить, есть ли связь между ней и дочерью руководителя проекта, пропавшей в 2024 году.</p>
+            </div>
+        </li>
+    </ol>
+
+</section>
+</script>
+
+<!-- ==================================================
+     5. ОБЩИЕ ЦЕЛИ
+     ================================================== -->
+<script type="text/template" id="tpl-goals-shared">
+<section class="doc doc--goals">
+
+    <h2 class="doc__title">ОБЩИЕ ЦЕЛИ</h2>
+
+    <ol class="goals">
+        <li class="goal">
+            <div class="goal__num">01</div>
+            <div class="goal__body">
+                <p class="goal__main">Проникнуть на территорию НИИ «Сфера».</p>
+            </div>
+        </li>
+
+        <li class="goal">
+            <div class="goal__num">02</div>
+            <div class="goal__body">
+                <p class="goal__main">Найти вход в подземный бункер.</p>
+            </div>
+        </li>
+
+        <li class="goal">
+            <div class="goal__num">03</div>
+            <div class="goal__body">
+                <p class="goal__main">Добраться до ЭВМ «Морфей» — ядро системы.</p>
+            </div>
+        </li>
+
+        <li class="goal">
+            <div class="goal__num">04</div>
+            <div class="goal__body">
+                <p class="goal__main">Запустить систему. Вывести из консервации.</p>
+            </div>
+        </li>
+
+        <li class="goal">
+            <div class="goal__num">05</div>
+            <div class="goal__body">
+                <p class="goal__main">Погрузиться в коллективный сон. Все восемь — одновременно.</p>
+            </div>
+        </li>
+
+        <li class="goal">
+            <div class="goal__num">06</div>
+            <div class="goal__body">
+                <p class="goal__main">Внутри сна — найти источник «сонной болезни».</p>
+            </div>
+        </li>
+
+        <li class="goal">
+            <div class="goal__num">07</div>
+            <div class="goal__body">
+                <p class="goal__main">Остановить распространение. Любым способом.</p>
+            </div>
+        </li>
+
+        <li class="goal">
+            <div class="goal__num">08</div>
+            <div class="goal__body">
+                <p class="goal__main">Вернуться с данными. Если получится — все. Если нет — хотя бы один.</p>
+            </div>
+        </li>
+    </ol>
+
+</section>
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>
